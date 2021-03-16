@@ -3,13 +3,20 @@ int main(){
     int start;
     printf("Enter ret --> ");
     scanf("%d", &start);
-    int j = start;
+    int j = 1;
     printf("|SU||MO||TU||WE||TH||FR||SA|\n");
     //for loop for blank spaces 
-    for (int i = 1; i < start; i++)
+    if (start <= 7)
     {
-        printf("|%2s|", " ");
+        for (int i = 1; i < start; i++)
+        {
+            printf("%4s", " ");
+        }
+        j = start;
     }
+    
+
+
      int i = 1, count = 31;
 
     for (; i <= count;)
