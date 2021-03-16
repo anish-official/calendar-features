@@ -4,21 +4,21 @@ int main(){
     printf("Enter ret --> ");
     scanf("%d", &start);
     int j = start;
-    printf("|SUN|MON|TUE|WED|THURS|FRI|SAT\n");
+    printf("|SU|MO|TU|WE|TH|FR|SA\n");
     //for loop for blank spaces 
     for (int i = 0; i < start; i++)
     {
-        printf("| |");
+        printf("|%2s|", " ");
     }
-    
+     int i = 1, count = 31;
 
-    for (int i = 0, count = 31; i <= count; i++)
+    for (; i <= count;)
     {
-        for (; j <= 7; j++,i++)
+        for (; (j <= 7) && ( i <= count); j++,i++)
         {
             printf("|%d|", i);
         }
-        printf("\n");
+        printf("\n"); 
         j=0;
     }
     
