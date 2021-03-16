@@ -3,23 +3,30 @@ int main(){
     int start;
     printf("Enter ret --> ");
     scanf("%d", &start);
-    int j = start;
-    printf("|SUN|MON|TUE|WED|THURS|FRI|SAT\n");
+    int j = 1;
+    printf("|SU||MO||TU||WE||TH||FR||SA|\n");
     //for loop for blank spaces 
-    for (int i = 0; i < start; i++)
+    if (start <= 7)
     {
-        printf("| |");
+        for (int i = 1; i < start; i++)
+        {
+            printf("%4s", " ");
+        }
+        j = start;
     }
     
 
-    for (int i = 0, count = 31; i <= count; i++)
+
+     int i = 1, count = 31;
+
+    for (; i <= count;)
     {
-        for (; j <= 7; j++,i++)
+        for (; (j <= 7) && ( i <= count); j++,i++)
         {
-            printf("|%d|", i);
+            printf("|%2d|", i);
         }
-        printf("\n");
-        j=0;
+        printf("\n"); 
+        j=1;
     }
     
     return 0;
