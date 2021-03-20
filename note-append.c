@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#define HANDEL FILE *record_file = fopen("calendar-notes.txt", "rb+")
+#define FILE_HANDEL FILE *record_file = fopen("calendar-notes.txt", "rb+")
 
 #pragma pack(1)
 typedef struct noteHandel {
@@ -29,7 +29,7 @@ int main(){
 }
 
 void appendNote(int date, int month, int year, char * text){
-    HANDEL;
+    FILE_HANDEL;
     noteStruct note;
     note.date = date;
     note.month = month;
@@ -41,11 +41,13 @@ void appendNote(int date, int month, int year, char * text){
 }
 
 void deleteNote(int date, int month, int year){
-    HANDEL;
-    int totalNotes = totalNotes(record_file);
+    FILE_HANDEL;
+    int totalNotes = totalNotesCount(record_file);
     noteStruct notes[totalNotes];
+    fseek(record_file, 0, SEEK_SET);
     fread(&notes, sizeof(notes), 1, record_file);   //might trigger a BUG
     int current = 0;
+    int temp;
     while (current <= totalNotes)
     {
         if (notes[current].year == year)
@@ -54,17 +56,28 @@ void deleteNote(int date, int month, int year){
             {
                 if (notes[current].date == date)
                 {
-                    /* code */
+                    temp = current;
+                    while (temp <= totalNotes)
+                    {
+                        notes[temp] = notes[temp + 1];
+                    }
                 }
                 
             }
             
         }
+        else {
+            current ++;
+        }
         
     }
-    
+    fseek(record_file, 0, SEEK_SET);
+    fwrite(&notes, sizeof(notes), 1, record_file);
+    fclose(record_file);
 }
-int totalNotes(FILE *file){
+
+
+int totalNotesCount(FILE *file){
     fseek(file, 0, SEEK_END);
     return (ftell(file));
 }
