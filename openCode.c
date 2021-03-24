@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include "notesOptions.c"
 int main(){
     int start;
     printf("Enter ret --> ");
@@ -15,9 +15,9 @@ int main(){
         j = start;
     }
     
+    
 
-
-     int i = 1, count = 31;
+    int i = 1, count = 31;
 
     for (; i <= count;)
     {

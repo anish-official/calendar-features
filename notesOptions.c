@@ -34,7 +34,7 @@ int main(){
     gets(text);
 
     appendNote(date, month, year, text);
-/* 
+
 FLUSH;
      printf("Enter Note Details [DD<space>MM<space>YYYY]: ");
     scanf("%d", &date);
@@ -55,10 +55,11 @@ FLUSH;
     FLUSH;
     scanf("%d", &year);
 FLUSH;
+    deleteNote(date, month, year);
 
     printf("Enter Note : ");
     gets(text);
-    appendNote(date, month, year, text); */ 
+    appendNote(date, month, year, text);
     tempDisplayNotes();
     return 0;
 
@@ -97,6 +98,7 @@ void deleteNote(int date, int month, int year){
                     while (temp <= totalNotes)
                     {
                         notes[temp] = notes[temp + 1];
+                        temp++;
                     }
                 }   
             }
