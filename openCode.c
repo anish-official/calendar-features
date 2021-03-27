@@ -1,4 +1,6 @@
 #include "notesOptions.c"
+
+
 int main(){
     int start;
     printf("Enter ret --> ");
